@@ -1,0 +1,383 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+//   width: 100vw;
+
+  img {
+    width: 100%;
+  }
+}
+
+//導覽列
+.navbar {
+  width: 100%;
+
+  .nav_container {
+    display: flex;
+    width: 100%;
+    padding: 0 5%;
+    max-width: 1600px;
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    @media screen and (max-width: 380px) {
+      padding: 0 2%;
+    }
+  }
+
+  /* 漢堡條先關 */
+  .burgerbar {
+    /*關閉display */
+    width: 25px;
+    height: 26px;
+    display: none;
+    background-image: url("../img/bars.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    // 平板
+    @media screen and (max-width: 890px) {
+      display: block;
+      margin-top: 11px;
+      margin-right: 3%;
+
+      // 點下去有浮動跑出來
+      &:hover ~ .menu-btn {
+        left: -34px;
+      }
+    }
+
+    @media screen and (max-width: 380px) {
+      margin-right: 1%;
+    }
+  }
+
+  /* 平板搜尋暫時關閉 */
+
+  .tablet_search {
+    /* background-color: red; */
+    padding: 10px 25px;
+    display: none;
+    @media screen and (max-width: 890px) {
+      display: block;
+      padding: 12px 0 0 0;
+      margin-top: unset;
+      width: 25px;
+      height: 25px;
+      img {
+        width: 30px;
+      }
+
+      a::after {
+        content: "";
+        background-size: cover;
+        background-image: url("../img/search.png");
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        top: 11px;
+      }
+    }
+
+    //小手機
+    @media screen and (max-width: 380px) {
+    padding: 10px 0 0 0;
+    margin-top: unset;
+    padding-top: 10px;
+    width: 25px;
+  }
+    a {
+      text-decoration: none;
+      }
+  }
+
+
+  /* 平板搜尋關閉完畢 */
+
+  // 按鈕關閉
+  .menu-btn {
+    display: none;
+    @media screen and (max-width: 890px) {
+      position: fixed;
+      left: -100px;
+      top: 55px;
+      transition: 1s;
+      display: block;
+    }
+  }
+
+  /* 20200213新增功能 */
+  /* logo調大小 */
+  .logo {
+    width: 80px;
+    padding: 10px;
+    padding-left: 5px;
+    padding-top: 15px;
+    // 平板
+    @media screen and (max-width: 890px) {
+      margin: auto;
+    }
+
+    .logo_img {
+      width: 100%;
+      height: 20px;
+      // 手機
+      @media screen and (max-width: 380px) {
+        width: 100%;
+        height: 18px;
+      }
+    }
+  }
+  /* 新增完畢 */
+
+  /* nav_links*/
+  .nav_links ul {
+    display: flex;
+    padding: 0;
+
+    // 平板
+    @media screen and (max-width: 890px) {
+      display: none;
+    }
+
+    li {
+      list-style: none;
+      display: inline-block;
+      position: relative;
+
+      a {
+        padding: 15px 10px;
+        padding-bottom: 5px;
+        margin: 0 5px;
+        font-size: 14px;
+        text-decoration: none;
+        font-size: 14px;
+
+        &::before {
+          background: currentColor;
+          content: "";
+          display: none;
+          height: 2px;
+          position: absolute;
+          left: 15px;
+          bottom: 0;
+          width: 35px;
+        }
+      }
+    }
+  }
+
+  // 通用功能
+  .nav_links ul li a:hover::before,
+  .menu a:hover::before,
+  .search a:hover::before,
+  .cart a:hover::before,
+  .login a:hover::before {
+    display: block;
+  }
+}
+
+// 手機的購物車先關
+.phone_cart {
+  display: none;
+  @media screen and (max-width: 380px) {
+    display: block;
+    width: 24px;
+    height: 25px;
+    margin-right: 5px;
+    padding-top: 10px;
+    .phone_cart_img {
+      width: 100%;
+      height: 25px;
+    }
+  }
+}
+
+/* nav_cart*/
+.nav_cart {
+  /* 整體往右靠 */
+  margin-left: auto;
+  display: flex;
+  font-size: 14px;
+  /* 內距往右靠 */
+  padding-right: 5px;
+
+  // 平板
+  @media screen and (max-width: 890px) {
+    margin-left: unset;
+  }
+
+  @media screen and (max-width: 380px) {
+    display: none;
+  }
+
+  .menu a,
+  .search a,
+  .cart a,
+  .login a {
+    padding: 15px 10px;
+    padding-bottom: 5px;
+    /* 右邊搜尋欄間隔 */
+    margin: 0 5px;
+    line-height: 51px;
+    text-decoration: none;
+    position: relative;
+
+    /* 點下去加斜線 */
+    &::before {
+      background: currentColor;
+      content: "";
+      display: none;
+      height: 2px;
+      position: absolute;
+      left: 10px;
+      bottom: 0;
+      width: calc(100% - 15px);
+    }
+
+    // 小手機
+    @media screen and (max-width: 380px) {
+      padding: 12px 3px;
+    }
+  }
+
+  /*所有Microsoft可以加入圖片 圖片大小調整*/
+  .menu a::after {
+    content: "✓";
+    height: 50px;
+    position: absolute;
+    right: -5px;
+    top: 3px;
+  }
+
+  .search a::after {
+    content: "";
+    background-position: center;
+    background-size: cover;
+    background-image: url("../img/search.png");
+    width: 50%;
+    height: 25px;
+    position: absolute;
+    right: -15px;
+    top: 13px;
+  }
+
+  .cart a::after {
+    content: "";
+    background-position: center;
+    background-size: cover;
+    background-image: url("../img/shopping cart.png");
+    width: 45%;
+    height: 25px;
+    position: absolute;
+    right: -15px;
+    top: 13px;
+  }
+
+  .login a::after {
+    content: "";
+    background-position: center;
+    background-size: cover;
+    background-image: url("../img/login.jpg");
+    width: 50%;
+    height: 25px;
+    position: absolute;
+    right: -15px;
+    top: 13px;
+  }
+}
+
+// 內容部分
+.banner_container {
+  display: flex;
+  width: 100%;
+  padding: 0 5%;
+  max-width: 1600px;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  /* 小電腦 */
+  @media screen and (max-width: 1084px) {
+    padding: 0 0%;
+  }
+
+  .banner {
+    width: 100%;
+    background-color: lightgray;
+  }
+}
+
+.cards_container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 40px 5%;
+  box-sizing: border-box;
+
+  .card {
+    width: 25%;
+    /* 用內距去推 */
+    padding-right: 10px;
+    box-sizing: border-box;
+    // 小電腦
+    @media screen and (max-width: 1084px) {
+      width: 50%;
+    }
+
+    // 手機
+    @media screen and (max-width: 750px) {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .card_content h2,
+    .card_content p {
+      margin: 0;
+    }
+  }
+}
+
+// footer
+footer {
+  width: 100%;
+  background-color: #cfcfcf;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  /* 分六塊 */
+  .footer_box {
+    background-color: #cfcfcf;
+    width: 15%;
+    height: 45vh;
+
+    //   小電腦
+    @media screen and (max-width: 1084px) {
+      width: 33%;
+      height: 45vh;
+    }
+
+    //  手機
+    @media screen and (max-width: 750px) {
+      background-color: #cfcfcf;
+      width: 100%;
+      height: 45vh;
+    }
+  }
+}
+
+// 平板
+@media screen and (max-width: 890px) {
+  .disapear {
+    display: none;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+}
